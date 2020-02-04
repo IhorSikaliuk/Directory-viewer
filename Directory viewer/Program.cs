@@ -10,7 +10,17 @@ namespace Directory_viewer
             for (int i = 0; i < counter; i++)
                 Console.Write(" - ");
             Console.WriteLine(directory);
-            DirectoryInfo[] list = directory.GetDirectories();
+            DirectoryInfo[] list = new DirectoryInfo[0];
+            try
+            {
+                list = directory.GetDirectories();
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.ReadKey();
+                System.Environment.Exit(1);
+            }
             foreach (DirectoryInfo dir in list)
                 checkDirectory(dir, counter + 1);
         }
