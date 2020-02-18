@@ -5,9 +5,9 @@ namespace Directory_viewer
 {
     class Program
     {
-        static void checkDirectory(DirectoryInfo directory, int counter)
+        static void checkDirectory(DirectoryInfo directory, int depth)
         {
-            for (int i = 0; i < counter; i++)
+            for (int i = 0; i < depth; i++) //відображення глибини вкладеного каталогу
                 Console.Write(" - ");
             Console.WriteLine(directory);
             DirectoryInfo[] list = new DirectoryInfo[0];
@@ -22,7 +22,7 @@ namespace Directory_viewer
                 System.Environment.Exit(1);
             }
             foreach (DirectoryInfo dir in list)
-                checkDirectory(dir, counter + 1);
+                checkDirectory(dir, depth + 1);
         }
         static void Main(string[] args)
         {
